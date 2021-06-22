@@ -15,18 +15,11 @@ public class ListaDupla<T> implements List<T> {
         tamanho = 0;
     }
 
-    /**
-     * Verifica o tamanho da lista
-     * @return o tamanho da lista
-     */
     @Override
     public int size() {
         return tamanho;
     }
-    /**
-     * Verifica se a lista está vazia
-     * @return true se estiver vazia. Caso contrário, false
-     */
+
     @Override
     public boolean isEmpty() {
         return tamanho == 0;
@@ -38,37 +31,23 @@ public class ListaDupla<T> implements List<T> {
         return null;
     }
 
-    /**
-     * Remove todos os elementos da lista
-     */
     @Override
     public void clear() {
         tamanho = 0;
         inicio = null;
         fim = null;
     }
-    /**
-     * Retorna o primeiro elemento da lista
-     * @return O primeiro elemento da lista
-     * @throws NoSuchElementException Se a lista estiver vazia
-     */
+
     public T getFirst() {
         if(isEmpty()) throw new NoSuchElementException("List is empty");
         return inicio.getValue();
     }
-    /**
-     * Retorna o último elemento da lista.
-     * @return O último elemento da lista
-     * @throws NoSuchElementException Se a lista estiver vazia
-     */
+
     public T getLast() {
         if(isEmpty()) throw new NoSuchElementException("List is empty");
         return fim.getValue();
     }
-    /**
-     * Adiciona um elemento na cabeça da lista
-     * @param value
-     */
+
     public void addFirst(T value) {
         No<T> first = new No<T>();
         first.setValue(value);
@@ -79,10 +58,7 @@ public class ListaDupla<T> implements List<T> {
         inicio = first;
         tamanho++;
     }
-    /**
-     * Adiciona um elemento na cauda da lista
-     * @param value
-     */
+
     public void addLast(T value) {
         if(inicio == null) { // Ainda n�o possui head
             addFirst(value);
@@ -96,11 +72,6 @@ public class ListaDupla<T> implements List<T> {
         }
     }
 
-    /**
-     * Remove e retorna o primeiro elemento da lista
-     * @return value
-     * @throws NoSuchElementException Se a lista estiver vazia
-     */
     public T removeFirst() {
         if(isEmpty()) throw new NoSuchElementException("List is empty");
         T value = inicio.getValue();
@@ -109,11 +80,6 @@ public class ListaDupla<T> implements List<T> {
         return value;
     }
 
-    /**
-     * Remove e retorna o �ltimo elemento da lista
-     * @return value
-     * @throws NoSuchElementException Se a lista estiver vazia
-     */
 
     public T removeLast() {
         if(isEmpty()) throw new NoSuchElementException("List is empty");
@@ -131,11 +97,7 @@ public class ListaDupla<T> implements List<T> {
         tamanho--;
         return value;
     }
-    /**
-     * Verifica se a lista contém o valor
-     * @param value
-     * @return true se o elemento estiver na lista. caso contrário, false
-     */
+
     @Override
     public boolean contains(Object value) {
         No<T> temp = inicio;
@@ -148,10 +110,7 @@ public class ListaDupla<T> implements List<T> {
         return false;
     }
 
-    /**
-     * Retorna uma lista de objetos com todos os elementos da lista
-     * @return
-     */
+
     public Object[] toArray() {
         Object[] array = new Object[(int) tamanho];
         No<T> temp = inicio;
@@ -202,12 +161,6 @@ public class ListaDupla<T> implements List<T> {
         return new Object[0];
     }
 
-    /**
-     * Retorna o elemento da posiçao index
-     * @param index
-     * @return elemento da posicao index
-     * @throws IndexOutOfBoundsException
-     */
     @Override
     public T get(int index) {
         if(index >= tamanho || index < 0) throw new IndexOutOfBoundsException("index "+index);
@@ -219,12 +172,6 @@ public class ListaDupla<T> implements List<T> {
     }
 
 
-    /**
-     * Remove o elemento da posiçao index e remove da lista
-     * @param index
-     * @return elemento da posicao index
-     * @throws IndexOutOfBoundsException (index >= size  || index < 0)
-     */
     public T remove(int index) {
         if(index >= tamanho || index < 0) throw new IndexOutOfBoundsException("index "+index);
         No<T> temp = inicio;
@@ -270,12 +217,7 @@ public class ListaDupla<T> implements List<T> {
         return null;
     }
 
-    /**
-     * Adiciona um novo elemento na posicao index
-     * @param index
-     * @param value
-     * @throws IndexOutOfBoundsException (index < 0 || index > size())
-     */
+
     public void add(int index, T value) {
         if(index > tamanho || index < 0) throw new IndexOutOfBoundsException("index "+index);
         No<T> temp = inicio;
@@ -298,13 +240,7 @@ public class ListaDupla<T> implements List<T> {
         }
         tamanho++;
     }
-    /**
-     * Atualiza o elemento da posiçao index
-     * @param index
-     * @param value
-     * @throws IndexOutOfBoundsException
-     * @return
-     */
+
     @Override
     public T set(int index, T value) {
         if(index >= tamanho || index < 0) throw new IndexOutOfBoundsException("index "+index);
